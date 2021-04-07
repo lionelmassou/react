@@ -13,11 +13,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        {/* Hello ! */}
         <div className="row">
-
           < Steps />
-
           <p>Heart : 80</p>
           <p>Temperature : -20</p>
           <p>Steps : 0</p>
