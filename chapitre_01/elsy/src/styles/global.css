@@ -1,6 +1,7 @@
 .box {
     padding: 8px;
     height: 190px;
+    text-align: center;
 }
 
 .box:nth-child(even){
