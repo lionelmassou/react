@@ -13,6 +13,8 @@ class App extends React.Component {
         <Teams color="green" name="TROYES" point={6} match={4} />
 
         <p style={{ backgroundColor: "black", color: "yellow", fontSize: 20 }}>Fin de liste</p>
+
+        
       </div>
     )
   }
