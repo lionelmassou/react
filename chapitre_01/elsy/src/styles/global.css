@@ -4,7 +4,7 @@
     text-align: center;
 }
 
-.box:nth-child(even){
+.box:nth-child(even){ 
     background-color:#cccccc; 
 }
 
