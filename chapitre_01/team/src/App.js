@@ -12,9 +12,9 @@ class App extends React.Component {
         <Teams color="blue" name="PSG" point={11} match={4} />
         <Teams color="green" name="TROYES" point={6} match={4} />
 
-        <p style={{ backgroundColor: "black", color: "yellow", fontSize: 20 }}>Fin de liste</p>
+        <p style={{ backgroundColor: "black", color: "yellow", fontSize: 12 }}>Fin de liste</p>
 
-        
+
       </div>
     )
   }
