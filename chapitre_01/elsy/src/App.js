@@ -58,22 +58,22 @@ class App extends React.Component {
   }
 
   calculateWater() {
-    let tmp1 =0;
-    let tmp2 =0;
-    let tmp3 = 0;
+    let howHot =0;
+    let howRythm =0;
+    let howSteps = 0;
     if (this.state.temperature > 20) {
-      tmp1 = 0.02 * (this.state.temperature - 20)
+      howHot = 0.02 * (this.state.temperature - 20)
       // this.setState({ water: tmp}) 
     }
     if (this.state.heart > 120) {
-      tmp2 = 0.0008 * (this.state.heart - 120)
+      howRythm = 0.0008 * (this.state.heart - 120)
       // this.setState({ water: this.state.water + 0.0008*(this.state.heart-120)})
     }
     if (this.state.steps > 10000) {
-      tmp3 = 0.00002 * (this.state.steps - 10000)
+      howSteps = 0.00002 * (this.state.steps - 10000)
       // this.setState({ water: this.state.water + 0.00002*(this.state.steps-10000) })
     }
-    let total = tmp1 + tmp2 + tmp3;
+    let total = howHot + howRythm + howSteps;
     this.setState({ water: (1.5 + total ).toFixed(2)})
   }
 

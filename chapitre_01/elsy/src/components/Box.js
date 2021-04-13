@@ -12,6 +12,9 @@ class Box extends React.Component {
     const notShow = () => {
 
       if (this.props.unit !== "L") {
+        if (this.props.unit === "steps") {
+          return (<input type="range" min={this.props.min} max={this.props.max} value={this.props.value} step = {1000} onInput={this.props.onChangeFunct}></input>)
+        }
         return (<input type="range" min={this.props.min} max={this.props.max} value={this.props.value} onInput={this.props.onChangeFunct}></input>)
         // if (this.props.unit === "steps") {
         //   // return (<input type="range" min={this.props.stepsMin} max={this.props.stepsMax} value={this.props.value} onInput></input>)
