@@ -24,29 +24,57 @@ class App extends React.Component {
     this.newFunctHeart = this.newFunctHeart.bind(this)
     this.newFunctSteps = this.newFunctSteps.bind(this)
     this.newFunctTemp = this.newFunctTemp.bind(this)
+    this.calculateWater = this.calculateWater.bind(this)
 
   }
   newFunctHeart(e) {
     // console.log("state1", this.state.heart);
-    // console.log(e.target);
+    // console.log("1", e.target.value);
     this.setState({
       heart: e.target.value
     })
+    this.calculateWater()
     // console.log("state2", this.state.heart);
   }
 
   newFunctSteps(e) {
-     this.setState({
+    // console.log("2", e.target.value);
+
+    this.setState({
       steps: e.target.value
     })
+    this.calculateWater()
     // console.log("state2", this.state.steps);
   }
 
   newFunctTemp(e) {
+    // console.log("3", e.target.value);
+
     this.setState({
       temperature: e.target.value
     })
+    this.calculateWater()
     // console.log("state2", this.state.temperature);
+  }
+
+  calculateWater() {
+    let tmp1 =0;
+    let tmp2 =0;
+    let tmp3 = 0;
+    if (this.state.temperature > 20) {
+      tmp1 = 0.02 * (this.state.temperature - 20)
+      // this.setState({ water: tmp}) 
+    }
+    if (this.state.heart > 120) {
+      tmp2 = 0.0008 * (this.state.heart - 120)
+      // this.setState({ water: this.state.water + 0.0008*(this.state.heart-120)})
+    }
+    if (this.state.steps > 10000) {
+      tmp3 = 0.00002 * (this.state.steps - 10000)
+      // this.setState({ water: this.state.water + 0.00002*(this.state.steps-10000) })
+    }
+    let total = tmp1 + tmp2 + tmp3;
+    this.setState({ water: (1.5 + total ).toFixed(2)})
   }
 
 
@@ -56,18 +84,13 @@ class App extends React.Component {
       <div className="container-fluid">
         <div className="row">
           {/* water */}
-          < Box icon="local_drink" color="#3A85FF" value={1.5} unit="L" />
+          < Box icon="local_drink" color="#3A85FF" value={this.state.water} unit="L" />
           {/* steps */}
-          < Box icon="directions_walk" color="black" value={this.state.steps} unit="steps" onStepsChange={this.newFunctSteps} />
+          < Box icon="directions_walk" color="black" min={stepsMin} max={stepsMax} value={this.state.steps} unit="steps" onChangeFunct={this.newFunctSteps} />
           {/* heart */}
-          < Box icon="favorite" color="red" value={this.state.heart} unit="bpm" onHeartChange={this.newFunctHeart} />
+          < Box icon="favorite" color="red" min={heartMin} max={heartMax} value={this.state.heart} unit="bpm" onChangeFunct={this.newFunctHeart} />
           {/* temperature */}
-          < Box icon="wb_sunny" color="yellow" value={this.state.temperature} unit="C°" onTempChange={this.newFunctTemp} />
-
-          {/* < Box icon="local_drink" color="#3A85FF" value= {this.state.water} unit="L" />
-          < Box icon="directions_walk" color="black" value={this.state.steps} unit="steps" />
-          < Box icon="favorite" color="red" value={this.state.heart} unit="bpm" />
-          < Box icon="wb_sunny" color="yellow" value={this.state.temperature} unit="C°" /> */}
+          < Box icon="wb_sunny" color="yellow" min={tempMin} max={tempMax} value={this.state.temperature} unit="C°" onChangeFunct={this.newFunctTemp} />
 
           <p>Heart : {heartMin} Bpm</p>
           <p>Temperature : {tempMin}°C</p>
@@ -81,5 +104,4 @@ class App extends React.Component {
   }
 }
 
-{/* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script> */ }
 export default App;
