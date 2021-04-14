@@ -7,7 +7,11 @@ class Button extends React.Component {
 
         return (
             <div>
-                <button>press me</button>
+                <button>
+                    {this.props.isSelected}
+                    
+                </button>
+                
             </div>
         )
     }

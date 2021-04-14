@@ -23,19 +23,18 @@ class App extends React.Component {
   renderNavigation() {
     return (
       <div>
-        {/* Les options */}
-        <Nav variant="pills" defaultActiveKey="/Add">
-          <Nav.Item>
+
+        {/* <Nav variant="pills">
+          <Nav.Item eventKey="/Add">
             <Nav.Link href="/Add">Add</Nav.Link>
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item eventKey="/List">
             <Nav.Link href="/List">List</Nav.Link>
           </Nav.Item>
-          <Nav.Item>
+          <Nav.Item eventKey="/Pay">
             <Nav.Link href="Pay">Pay</Nav.Link>
           </Nav.Item>
 
-          {/* le button et la barre de quantite */}
           <Form>
             <Form.Group controlId="formBasicRange">
               <Form.Label>Range</Form.Label>
@@ -44,7 +43,24 @@ class App extends React.Component {
           </Form>
 
           <Button />
-        </Nav>
+
+        </Nav> */}
+
+        <nav className="col">
+          <ul>
+            <li>
+              <a href="/add">Add</a>
+            </li>
+            <li>
+              <a href="/list">List</a>
+            </li>
+            <li>
+              <a href="/pay">Pay</a>
+            </li>
+          </ul>
+        </nav>
+
+
 
       </div>
     );
