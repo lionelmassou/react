@@ -6,32 +6,33 @@ import Pay from "./components/Pay.js";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 class App extends React.Component {
 
-  // constructor(props) {
-  //   super(props);
+  constructor(props) {
+    super(props);
 
-  //   this.state = {
-  //     activeTab: add,
-  //     items: []
-  //   }
-  // }
+    this.state = {
+      activeTab: "add",
+      items: []
+    }
+  }
 
   renderNavigation() {
     return (
-      <nav>
-        <ul>
-          <li>
-            <a href="./components/Add.js">Add</a>
-          </li>
-          <li>
-            <a href="./components/List.js">List</a>
-          </li>
-          <li>
-            <a href="./components/Pay.js">Pay</a>
-          </li>
-        </ul>
+      <div className = "container-fluid">
+      <nav className="row">
+        <p>
+          <a href="/Add">Add</a>
+        </p>
+        <p>
+          <a href="/List">List</a>
+        </p>
+        <p>
+          <a href="/Pay">Pay</a>
+        </p>
       </nav>
+      </div>
     );
   }
 
@@ -46,10 +47,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="container-fluid">
-        <div className="row">
-          {this.renderNavigation()}
-          {this.renderContent()}
-        </div>
+        {this.renderContent()}
+        {this.renderNavigation()}
       </div>
     );
   }
