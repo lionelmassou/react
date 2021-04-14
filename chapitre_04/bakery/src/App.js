@@ -47,17 +47,16 @@ class App extends React.Component {
         </Nav> */}
 
         <nav className="col">
-          <ul>
-            <li>
-              <a href="/add">Add</a>
-            </li>
-            <li>
-              <a href="/list">List</a>
-            </li>
-            <li>
-              <a href="/pay">Pay</a>
-            </li>
-          </ul>
+          <p>
+            <a href="/add">Add</a>
+          </p>
+          <p>
+            <a href="/list">List</a>
+          </p>
+          <p>
+            <a href="/pay">Pay</a>
+          </p>
+
         </nav>
 
 
