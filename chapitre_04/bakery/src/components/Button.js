@@ -7,7 +7,7 @@ class Button extends React.Component {
 
         return (
             <div>
-                <button >add</button>
+                <button>press me</button>
             </div>
         )
     }
