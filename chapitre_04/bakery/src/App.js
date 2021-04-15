@@ -5,9 +5,7 @@ import List from "./components/List.js";
 import Pay from "./components/Pay.js";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form'
+
 
 class App extends React.Component {
 
@@ -23,29 +21,6 @@ class App extends React.Component {
   renderNavigation() {
     return (
       <div>
-
-        {/* <Nav variant="pills">
-          <Nav.Item eventKey="/Add">
-            <Nav.Link href="/Add">Add</Nav.Link>
-          </Nav.Item>
-          <Nav.Item eventKey="/List">
-            <Nav.Link href="/List">List</Nav.Link>
-          </Nav.Item>
-          <Nav.Item eventKey="/Pay">
-            <Nav.Link href="Pay">Pay</Nav.Link>
-          </Nav.Item>
-
-          <Form>
-            <Form.Group controlId="formBasicRange">
-              <Form.Label>Range</Form.Label>
-              <Form.Control type="range" />
-            </Form.Group>
-          </Form>
-
-          <Button />
-
-        </Nav> */}
-
         <nav className="col">
           <p>
             <a href="/add">Add</a>
@@ -56,11 +31,7 @@ class App extends React.Component {
           <p>
             <a href="/pay">Pay</a>
           </p>
-
         </nav>
-
-
-
       </div>
     );
   }
@@ -73,6 +44,18 @@ class App extends React.Component {
     );
   }
 
+  renderButton() {
+    if (this.state.activeTab === 'add') {
+      return (
+        <Button style = {{ backgroundColor = "blue"}} />
+      )
+    } else {
+      return (
+        <Button style = {{ backgroundColor = "white"}} />
+      );
+    }
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -80,6 +63,12 @@ class App extends React.Component {
           {this.renderContent()}
           <div className="col">
             {this.renderNavigation()}
+            {this.renderButton()}
+            {/* < Button
+              isSelected={
+                this.state.activeTab === "add" ? style = {{ backgroundColor : "blue"}} : style = {{ backgroundColor : "white"}}
+              }
+            /> */}
           </div>
         </div>
       </div>
