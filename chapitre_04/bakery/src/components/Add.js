@@ -20,6 +20,7 @@ class Add extends React.Component {
         return (
             <div>
                 <h1>Add</h1>
+                
             </div>
         )
     }
