@@ -17,28 +17,36 @@ class App extends React.Component {
       activeTab: "add",
       items: []
     }
-    this.handleClickAdd = this.handleClickAdd.bind(this)
-    this.handleClickList = this.handleClickList.bind(this)
-    this.handleClickPay = this.handleClickPay.bind(this)
+    this.selectAdd = this.selectAdd.bind(this)
+    this.selectList = this.selectList.bind(this)
+    this.selectPay = this.selectPay.bind(this)
+    this.addItem = this.addItem.bind(this)
   }
 
-  handleClickAdd() {
+  selectAdd() {
     this.setState({
       activeTab: "add"
-      
     })
   }
 
-  handleClickList() {
+  selectList() {
     this.setState({
       activeTab: "list"
     })
   }
 
-  handleClickPay() {
+  selectPay() {
     this.setState({
       activeTab: "pay"
     })
+  }
+
+  addItem(name, price) {
+    this.setState({
+      name: name.target.value,
+      price: price.target.value
+    })
+    console.log(this.state.items)
   }
   // renderNavigation() {
   //   return (
@@ -63,52 +71,68 @@ class App extends React.Component {
       <section>
         <h1 style={{ textAlign: "center" }}>BAKERY</h1>
       </section>
-    );
+    )
   }
 
-  // renderButton() {
-  //   if (this.state.activeTab === 'add') {
-  //     return (
-  //       <Button style = {{ backgroundColor: "blue"}} />
-  //     )
-  //   } else {
-  //     return (
-  //       <Button style = {{ backgroundColor: "white"}} />
-  //     );
-  //   }
-  // }
+  renderButton() {
+    if (this.state.activeTab === "add") {
+      return (
+        <div>
+          <Add />
+        </div>
+      )
+    }
+    if (this.state.activeTab === "list") {
+      return (
+        <List />
+      )
+    }
+    if (this.state.activeTab === "pay") {
+      return (
+        <Pay />
+      )
+    }
+  }
+
+  renderButtonPress() {
+    return (
+      <div style={{ alignItems: "flex", display: "flex", justifyContent: "center" }}>
+
+        < Button
+          isSelected={this.state.activeTab === "add" ? "btn btn-primary" : "btn btn-light"}
+          onClick={this.selectAdd}
+
+          //à checker
+          onClick={() => this.addItem()}
+
+
+        > Add </ Button>
+
+        < Button
+          isSelected={this.state.activeTab === "list" ? "btn btn-primary" : "btn btn-light"}
+          onClick={this.selectList}
+
+        > List </ Button>
+
+        < Button
+          isSelected={this.state.activeTab === "pay" ? "btn btn-primary" : "btn btn-light"}
+          onClick={this.selectPay}
+
+        > Pay </ Button>
+      </div>
+    )
+  }
 
   render() {
     return (
       <div>
         {this.renderContent()}
-
-        <div style={{ alignItems: "flex", display: "flex", justifyContent: "center" }}>
-          {/* {this.renderNavigation()} */}
-
-          < Button
-            isSelected={this.state.activeTab === "add" ? "btn btn-primary" : "btn btn-light"}
-            onClick={this.handleClickAdd}
-          > Add </ Button>
-
-          < Button
-            isSelected={this.state.activeTab === "list" ? "btn btn-primary" : "btn btn-light"}
-            onClick={this.handleClickList}
-
-          > List </ Button>
-
-          < Button
-            isSelected={this.state.activeTab === "pay" ? "btn btn-primary" : "btn btn-light"}
-            onClick={this.handleClickPay}
-
-          > Pay </ Button>
+        {/* {this.renderNavigation()} */}
+        {this.renderButtonPress()}
+        {this.renderButton()}
 
 
-          {/* {this.renderButton(Add)}
-          {this.renderButton(List)}
-          {this.renderButton(Pay)} */}
 
-        </div>
       </div>
     );
   }

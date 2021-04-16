@@ -18,7 +18,7 @@ class List extends React.Component {
 
         return (
             <div>
-                <h1>List</h1>
+                <h1>{this.props.items}</h1>
             </div>
         )
     }
