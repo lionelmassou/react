@@ -42,7 +42,7 @@ class App extends React.Component {
     })
   }
 
- 
+
   addItem(name, price) {
 
     const newItem = {
@@ -63,19 +63,16 @@ class App extends React.Component {
     console.table(this.state.items)
   }
 
-  removeItem(name,price) {
-    const newItem = {
-      name: name,
-      price: parseInt(price)      
-    }
+  removeItem() {
+
     const deleteItems = this.state.items
 
-    deleteItems.pop(newItem)
+    deleteItems.pop()
 
     this.setState({
       items: deleteItems
     })
-    
+
   }
 
   // renderNavigation() {
@@ -108,14 +105,14 @@ class App extends React.Component {
     if (this.state.activeTab === "add") {
       return (
         <div>
-           <Add addItem={this.addItem}/>
+          <Add addItem={this.addItem} />
         </div>
       )
     }
     if (this.state.activeTab === "list") {
       return (
         <div>
-          <List listItems={this.state.items}/>
+          <List listItems={this.state.items} />
         </div>
       )
     }

@@ -2,9 +2,9 @@ import React from "react";
 
 class List extends React.Component {
 
-    constructor(props) {
-        super(props);
-    }
+    // constructor(props) {
+    //     super(props);
+    // }
 
     render() {
         // console.log("voila", this.props.listItems)
@@ -17,7 +17,7 @@ class List extends React.Component {
                             {/* {elem.name} {elem.price} */}
                             {elem.name}
                             <span className="badge badge-primary badge-pill btn btn-primary">{elem.price}€</span>
-                            <span><button className="btn btn-warning" onClick={() => this.props.removeItem(elem.name, elem.price)} >reset</button></span>
+                            <span><button className="btn btn-warning" onClick={this.removeItem} >reset</button></span>
                         </li>
                     ))}
                 </ul>
