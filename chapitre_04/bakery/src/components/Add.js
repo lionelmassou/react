@@ -4,10 +4,12 @@ class Add extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             productName: "",
             price: 1
         }
+
         this.updatePrice = this.updatePrice.bind(this)
         this.updateProductName = this.updateProductName.bind(this)
     }
@@ -26,17 +28,16 @@ class Add extends React.Component {
     render() {
         return (
             <div>
-                <div style={{ alignItems: "flex", display: "flex", justifyContent: "center" }}> 
+                <div style={{ alignItems: "flex", display: "flex", justifyContent: "center" }}>
                     <input type="text" name="enter product" onChange={this.updateProductName} />
 
-                    {/* à checker */}
-                    <button type="button" className="btn btn-primary" onClick={this.props.addItem}>Add</button>
+                    <button type="button" className="btn btn-primary" onClick={() => this.props.addItem(this.state.productName, this.state.price)}>Add</button>
                 </div>
                 <div style={{ alignItems: "flex", display: "flex", justifyContent: "center" }}>
                     <p>{this.state.price}</p>
                 </div>
                 <div style={{ alignItems: "flex", display: "flex", justifyContent: "center" }}>
-                    <input type="range" min={1} max={10} onChange={this.updatePrice} />
+                    <input type="range" min={1} max={10} value={this.state.price} onChange={this.updatePrice} />
                 </div>
 
             </div>

@@ -21,6 +21,7 @@ class App extends React.Component {
     this.selectList = this.selectList.bind(this)
     this.selectPay = this.selectPay.bind(this)
     this.addItem = this.addItem.bind(this)
+    this.removeItem = this.removeItem.bind(this)
   }
 
   selectAdd() {
@@ -41,13 +42,42 @@ class App extends React.Component {
     })
   }
 
+ 
   addItem(name, price) {
+
+    const newItem = {
+      name: name,
+      price: parseInt(price)
+    }
+
+    const updateItems = this.state.items
+
+    updateItems.push(newItem)
+
     this.setState({
-      name: name.target.value,
-      price: price.target.value
+      // items: [... this.state.items, newItem]
+
+      items: updateItems
     })
-    console.log(this.state.items)
+    console.log("items", this.state.items)
+    console.table(this.state.items)
   }
+
+  removeItem(name,price) {
+    const newItem = {
+      name: name,
+      price: parseInt(price)      
+    }
+    const deleteItems = this.state.items
+
+    deleteItems.pop(newItem)
+
+    this.setState({
+      items: deleteItems
+    })
+    
+  }
+
   // renderNavigation() {
   //   return (
   //     <div>
@@ -78,18 +108,22 @@ class App extends React.Component {
     if (this.state.activeTab === "add") {
       return (
         <div>
-          <Add />
+           <Add addItem={this.addItem}/>
         </div>
       )
     }
     if (this.state.activeTab === "list") {
       return (
-        <List />
+        <div>
+          <List listItems={this.state.items}/>
+        </div>
       )
     }
     if (this.state.activeTab === "pay") {
       return (
-        <Pay />
+        <div>
+          <Pay />
+        </div>
       )
     }
   }
@@ -101,23 +135,16 @@ class App extends React.Component {
         < Button
           isSelected={this.state.activeTab === "add" ? "btn btn-primary" : "btn btn-light"}
           onClick={this.selectAdd}
-
-          //à checker
-          onClick={() => this.addItem()}
-
-
         > Add </ Button>
 
         < Button
           isSelected={this.state.activeTab === "list" ? "btn btn-primary" : "btn btn-light"}
           onClick={this.selectList}
-
         > List </ Button>
 
         < Button
           isSelected={this.state.activeTab === "pay" ? "btn btn-primary" : "btn btn-light"}
           onClick={this.selectPay}
-
         > Pay </ Button>
       </div>
     )
