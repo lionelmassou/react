@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./components/Button.js";
 import Card from "./components/Card.js"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./styles/global.css";
+// import "./styles/global.css";
 
 class App extends React.Component {
   constructor() {
@@ -27,46 +27,38 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8000/countries")
+    fetch("http://localhost:8000/countries/france")
       .then(response => response.json())
       .then(result => {
         console.log(result)
 
         this.setState({
-          name: result[0].name,
-          capital: result[0].capital,
-          flag: result[0].flag,
-          population: result[0].population,
-          region: result[0].region
+          name: result.arrayCountry[0].name,
+          capital: result.arrayCountry[0].capital,
+          flag: result.arrayCountry[0].flag,
+          population: result.arrayCountry[0].population,
+          region: result.arrayCountry[0].region
         })
       })
       .catch(error => console.error(error));
   }
 
   getCountry(country) {
-    // getCountry () {
+    return fetch("http://localhost:8000/countries/" + country)
+    .then(response => response.json())
+    .then(result => {
+      console.log(result)
 
-    // console.log("humanChoose 1", this.state.humanChoose)
-    // return fetch("https://restcountries.eu/rest/v2/name/" + this.state.humanChoose)
-    return fetch("http://localhost:8000/countries" + country)
-      .then(response => response.json())
-      .then(result => {
-        console.log(result)
-
-        const  = req.params.countries
-
-        //faire un console log pour modifier l'état des state
-
-        this.setState({
-          name: result[0].name,
-          capital: result[0].capital,
-          flag: result[0].flag,
-          population: result[0].population,
-          region: result[0].region
-        })
+      this.setState({
+        name: result.arrayCountry[0].name,
+        capital: result.arrayCountry[0].capital,
+        flag: result.arrayCountry[0].flag,
+        population: result.arrayCountry[0].population,
+        region: result.arrayCountry[0].region
       })
-      .catch(error => console.error(error));
-  }
+    })
+    .catch(error => console.error(error));
+}
 
   renderButton() {
     console.log("humanChoose 2", this.state.humanChoose)
@@ -84,7 +76,7 @@ class App extends React.Component {
             <Button onClick={() => this.getCountry("croatia")} children="Croatia" ></Button>
           </div>
         </div>
-        <form>
+        {/* <form>
           <input
             type="text"
             className="button"
@@ -94,7 +86,7 @@ class App extends React.Component {
           <Button onClick={this.getCountry}>
             Search
         </Button>
-        </form>
+        </form> */}
 
       </div>
     )
