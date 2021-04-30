@@ -17,7 +17,7 @@ class List extends React.Component {
                             {/* {elem.name} {elem.price} */}
                             {elem.name}
                             <span className="badge badge-primary badge-pill btn btn-primary">{elem.price}€</span>
-                            <span><button className="btn btn-warning" onClick={this.removeItem} >reset</button></span>
+                            <span><button className="btn btn-warning" onClick={this.removeItem} >delete</button></span>
                         </li>
                     ))}
                 </ul>
