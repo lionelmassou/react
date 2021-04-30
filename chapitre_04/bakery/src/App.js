@@ -149,13 +149,15 @@ class App extends React.Component {
 
   render() {
     return (
+
       <div>
-        {this.renderContent()}
-        {/* {this.renderNavigation()} */}
-        {this.renderButtonPress()}
-        {this.renderButton()}
+        <div>
+          {this.renderContent()}
+          {/* {this.renderNavigation()} */}
+          {this.renderButtonPress()}
+          {this.renderButton()}
 
-
+        </div>  
 
       </div>
     );
