@@ -18,6 +18,9 @@ class Pay extends React.Component {
     handleSelect(name, price) {
         console.log("name", name)
         console.log("price", price)
+
+       
+
     }
 
     render() {
@@ -31,14 +34,15 @@ class Pay extends React.Component {
                 {/* <Card productName ="croissant"/> */}
                 <ul>
                     {this.props.items.map((elem) => (
+
+                        // console.log("à quoi ressemble elem : ", elem)
                         <li key={elem}>
                             <Card productName={elem.name} price={elem.price} onClick={this.handleSelect} />
                             <span>{elem.price}€</span>
                         </li>
                     ))}
                 </ul>
-
-            </div>
+            </div >
         )
     }
 }

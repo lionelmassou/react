@@ -30,7 +30,7 @@ class Card extends React.Component {
 
         <button onClick={() => { this.props.onClick(this.props.productName, this.props.price) }}>
             {/* <img src={`https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/${this.props.productName}.png`} /> */}
-            <img src = {this.state.image}></img>
+            <img src = {this.state.image} alt="image"></img>
         </button>
 
         return (
