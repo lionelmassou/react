@@ -75,24 +75,6 @@ class App extends React.Component {
 
   }
 
-  // renderNavigation() {
-  //   return (
-  //     <div>
-  //       <nav className="col">
-  //         <p>
-  //           <a href="/add">Add</a>
-  //         </p>
-  //         <p>
-  //           <a href="/list">List</a>
-  //         </p>
-  //         <p>
-  //           <a href="/pay">Pay</a>
-  //         </p>
-  //       </nav>
-  //     </div>
-  //   );
-  // }
-
   renderContent() {
     return (
       <section>
@@ -119,7 +101,7 @@ class App extends React.Component {
     if (this.state.activeTab === "pay") {
       return (
         <div>
-          <Pay />
+          <Pay items={this.state.items} />
         </div>
       )
     }

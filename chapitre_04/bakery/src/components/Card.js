@@ -12,15 +12,17 @@ class Card extends React.Component {
     }
 
     componentDidMount() {
-        let url = `https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/${this.props.productName}.png`
+        const url = `https://raw.githubusercontent.com/konexio/digitous-assest/main/bakery/${this.props.productName}.png`
         console.log("url", url)
         fetch(url)
             .then(res => res.blob())
-            .then (() => URL.createObjectURL)
-            .then(() => {
+            .then (data => {
+                
+                const img= URL.createObjectURL(data)
+            
                 this.setState({
-                    image: url
-                });
+                    image: img
+                })
             })
             .catch(error => console.error(error))
     }
