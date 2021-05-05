@@ -68,10 +68,10 @@ class Pay extends React.Component {
                 <div className="row">
                     {/* <ul> */}
                     {this.props.items.map((item) => (
+                        <Card productName={item.name} price={item.price} onClick={this.handleSelect} />
 
                         // console.log("à quoi ressemble item : ", item)
                         // <li className="list-group-item d-flex justify-content-between align-items-center" key={item}>
-                        <Card productName={item.name} price={item.price} onClick={this.handleSelect} />
                         // <span>{item.price}€</span>
                         // </li>
                     ))}
