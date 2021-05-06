@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Card from './Card'
 
 export class Popular extends Component {
     constructor() {
@@ -13,23 +14,37 @@ export class Popular extends Component {
         const url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e441f8a3a151d588a4932d2c5d310769"
         fetch(url)
             .then(response => response.json())
-            .then( data => {
+            .then(data => {
                 console.log("ceci est le resulat", data)
 
                 console.log("", data.results);
 
                 this.setState({
-                    movies:data.results
+                    movies: data.results
                 });
             })
             .catch(err => console.error("fetch error", err))
     }
 
     render() {
+
+        console.log("new value of the array movies : ", this.state.movies)
         return (
             <div>
                 <h1>Popular</h1>
-                {/* {this.movieList()} */}
+                <ul>
+                    {this.state.movies.map((elem, index) => {
+                        const url = "https://image.tmdb.org/t/p/w300/"
+                        return <li key={index}>
+                            <Card
+                                image={url + elem.poster_path}
+                                title={elem.title}
+                                release={elem.release_date}
+                                overview={elem.overview}
+                            />
+                        </li>
+                    })}
+                </ul>
             </div>
         )
     }
