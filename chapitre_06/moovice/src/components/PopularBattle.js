@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import Card from '../components/Card'
-import Favorites from './Favorites';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class PopularBattle extends Component {
 

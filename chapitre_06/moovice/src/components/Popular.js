@@ -29,7 +29,7 @@ export class Popular extends Component {
     }
 
     render() {
-        return (
+        return (    
             <div>
                 <h1>Popular</h1>
 

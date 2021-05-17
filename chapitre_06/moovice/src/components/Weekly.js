@@ -14,7 +14,12 @@ export class Weekly extends Component {
     }
 
     componentDidMount() {
-        const url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e441f8a3a151d588a4932d2c5d310769"
+
+        const today = moment().format('YYYY-MM-DD')
+        const lastweek = moment().subtract(1, "week").format('YYYY-MM-DD')
+
+
+        const url = `http://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${lastweek}&primary_release_date.lte=${today}&api_key=e441f8a3a151d588a4932d2c5d310769`
         fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -34,7 +39,7 @@ export class Weekly extends Component {
             <div>
                 <h1>Popular</h1>
 
-                <div className="row">
+                <div className="row"> 
                     {
                         this.state.movies.map(elem => {
                             return (
