@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-// import PopularBattle from './PopularBattle'
+import { getMovieApi } from '../utils/Api.js'
+import Card from '../components/Card'
 
 export class Favorites extends Component {
 
@@ -23,12 +24,7 @@ export class Favorites extends Component {
 
 
     getMovie(id) {
-        const url = `http://api.themoviedb.org/3/movie/${id}?api_key=e441f8a3a151d588a4932d2c5d310769`
-
-        // console.log(url);
-
-        fetch(url)
-            .then(response => response.json())
+        getMovieApi(id)
             .then(data => {
                 // console.log("data" , data);
                 this.setState({
@@ -48,10 +44,23 @@ export class Favorites extends Component {
         // console.log("favIds", this.state.favIds);
         // console.log("movies", this.state.movies);
         return (
-            <div>
-                <h1>Favorites</h1>
+            <div className="container">
+            <h1 className="text-center">Favorites</h1>
 
+            <div className="row">
+                {
+                    this.state.movies.map(elem => {
+                        return (
+                            <div className="col-6">
+                                <Card {...elem} />
+                            </div>
+                        )
+                    })
+                }
             </div>
+
+
+        </div>
         )
     }
 }

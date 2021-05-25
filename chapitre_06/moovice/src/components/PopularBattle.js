@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { getPopularMovies } from '../utils/Api'
 import Card from '../components/Card'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,13 +12,10 @@ class PopularBattle extends Component {
     }
 
     componentDidMount() {
-        const url = "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e441f8a3a151d588a4932d2c5d310769"
-
-        fetch(url)
-            .then(response => response.json())
+        getPopularMovies()
             .then(data => {
                 this.setState({
-                    movies: data.results
+                    movies: data.popularMovies
                 })
             })
     }

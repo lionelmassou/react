@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Card from '../components/Card'
-import moment from 'moment'
+import { getLatestMovies } from '../utils/Api'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -15,17 +15,10 @@ export class WeeklyBattle extends Component {
     }
 
     componentDidMount() {
-        const today = moment().format('YYYY-MM-DD')
-
-        const lastweek = moment().subtract(1, "week").format('YYYY-MM-DD')
-
-        const url = `http://api.themoviedb.org/3/discover/movie?primary_release_date.gte=${lastweek}&primary_release_date.lte=${today}&api_key=e441f8a3a151d588a4932d2c5d310769`
-
-        fetch(url)
-            .then(response => response.json())
+        getLatestMovies()
             .then(data => {
                 this.setState({
-                    movies: data.results
+                    movies: data.weeklyMovies
                 })
             })
     }
