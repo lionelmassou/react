@@ -24,8 +24,8 @@ export const getPopularMovies = () => {
 
 export const getMovieApi = (id) => {
 
-    const url = `http://api.themoviedb.org/3/movie/${id}?api_key=e441f8a3a151d588a4932d2c5d310769`
-
+    // const url = `http://api.themoviedb.org/3/movie/${id}?api_key=e441f8a3a151d588a4932d2c5d310769`
+    const url = `http://localhost:8000/${id}`
     return fetch(url)
         .then(response => response.json())
 }
