@@ -1,29 +1,33 @@
-import { useState } from "react";
-import "./App.css";
+import { Switch, Route, BrowserRouter, Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import AddUser from './views/AddUser'
+import ListUser from './views/ListUser'
 
 function App() {
-  const [image, setImage] = useState();
-
-  const send = () => {
-    const formData = new FormData();
-
-    console.log("formdata c'est quoi: ", formData);
-    
-    formData.append("image", image);
-    fetch("http://localhost:8052/upload", {
-      method: "POST",
-      body: formData,
-    });
-  };
-
+  
   return (
-    <>
-      <input
-        type="file"
-        onChange={(event) => setImage(event.target.files[0])}
-      ></input>
-      <button onClick={send}>Send</button>
-    </>
+    <BrowserRouter>
+      <div className="container">
+        <nav>
+          <ul>
+            <li><Link to="/">Liste d'users</Link></li>
+            <li><Link to="/add-user">Ajouter un nouvel user</Link></li>
+          </ul>
+        </nav>
+
+        <Switch>
+          <Route exact path="/" >
+            <ListUser/>
+          </Route>
+
+          <Route exact path="/add-user">
+            <AddUser />
+          </Route>
+
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
 
